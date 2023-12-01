@@ -1,12 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"strconv"
-	"os"
 	"bufio"
+	"fmt"
+	"os"
+	"strconv"
 	"strings"
-	"./utils"
+
+	"../utils"
 )
 
 func loadShuttleData() (int, string) {
@@ -19,7 +20,7 @@ func loadShuttleData() (int, string) {
 	for scanner.Scan() {
 		notes = append(notes, scanner.Text())
 	}
-	
+
 	departureTime, err := strconv.Atoi(notes[0])
 	utils.Check(err)
 
@@ -48,7 +49,7 @@ func shuttleSearchPart1() int {
 
 	for {
 		for _, departureTime := range shuttleDepartureTimes {
-			if time % departureTime == 0 {
+			if time%departureTime == 0 {
 				shuttleId = departureTime
 				delay = time - minDepartureTime
 				foundShuttle = true
@@ -80,11 +81,11 @@ func shuttleSearchPart2() int {
 	timestamp := 0
 	for {
 		isViable = true
-		for t := timestamp; t < timestamp + scheduleLen; t++ {
+		for t := timestamp; t < timestamp+scheduleLen; t++ {
 			offset := t - timestamp
 			busId, ok := busIdOffsets[offset]
 			if ok {
-				if t % busId != 0 {
+				if t%busId != 0 {
 					isViable = false
 					break
 				}
