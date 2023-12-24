@@ -48,7 +48,7 @@ func getCalibrationValuePart1(line string) (int, error) {
 		if left == 0 && isAlphaNumeric(line[i]) {
 			left = line[i]
 		}
-		if right == 0 && isAlphaNumeric((line[j])) {
+		if right == 0 && isAlphaNumeric(line[j]) {
 			right = line[j]
 		}
 		if left != 0 && right != 0 {
